@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import Cookies from "universal-cookie";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import getUserByToken from "../Lib/getUserByToken";
 
 const Login = () => {
@@ -9,6 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [toHome, setToHome] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const history = useHistory();
 
   useEffect(() => {
     const token = new Cookies().get("token");
@@ -28,18 +29,17 @@ const Login = () => {
       .then((res) => {
         const token = new Cookies();
         token.set("token", res.data.token, { path: "", maxAge: 604800 });
-        setToHome(true);
+        history.push("/create");
       })
       .catch(() => setErrorMessage("Something went wrong. Please try again."));
   };
 
   return (
     <div className="container">
-      {toHome ? <Redirect to="/create" /> : null}
       <div className="my-5">
         <center>
           <img
-            src={`${process.env.PUBLIC_URL}/favicon.ico`}
+            src={`${process.env.PUBLIC_URL}/favicon.icon`}
             alt="Stackoverflow icon"
             className="login-img"
           />
