@@ -10,13 +10,13 @@ const Home = () => {
   const [firstRender, setFirstRender] = useState(true);
   const [questions, setQuestions] = useState(null);
 
-  useEffect(() => {
-    const token = new Cookies().get("token");
-    getUserByToken(token).then((result) => {
-      if (result) setUserInfo(result);
-      if (firstRender) setFirstRender(false);
-    });
-  }, []);
+  // useEffect(() => {
+  //   const token = new Cookies().get("token");
+  //   getUserByToken(token).then((result) => {
+  //     if (result) setUserInfo(result);
+  //     if (firstRender) setFirstRender(false);
+  //   });
+  // }, []);
 
   useEffect(() => {
     axios
@@ -24,21 +24,21 @@ const Home = () => {
       .then((res) => setQuestions(res.data));
   });
 
-  useEffect(() => console.log(userInfo), [userInfo]);
+  // useEffect(() => console.log(userInfo), [userInfo]);
 
   return (
-    <div className="container">
-      {!userInfo && !firstRender ? (
-        <div className="mt-5 intro-pg pt-5">
-          <h1 className="intro-title">Stackoverflow</h1>
+    // <div className="container">
+    //   {!userInfo && !firstRender ? (
+    //     <div className="mt-5 intro-pg pt-5">
+    //       <h1 className="intro-title">Stackoverflow</h1>
 
-          <Link to="/login" className="btn btn-dark mr-2">
-            Log in
-          </Link>
-          <Link to="/register" className="btn btn-light ml-2">
-            Sign up
-          </Link>
-        </div>
+    //       <Link to="/login" className="btn btn-dark mr-2">
+    //         Log in
+    //       </Link>
+    //       <Link to="/register" className="btn btn-light ml-2">
+    //         Sign up
+    //       </Link>
+    //     </div>
       ) : (
         <div>
           <h1 className="index-title">
@@ -52,18 +52,14 @@ const Home = () => {
               <div key={question._id} className="box theme-reverse">
                 <Link to={`/question/${question._id}`}>
                   <h3>{question.title}</h3>
-                  <p className="color-adjust">
-                    Asked {moment(question?.createdAt).fromNow()} by{" "}
-                    {question?.asker?.name}
-                  </p>
-                </Link>
-              </div>
-            );
-          })}
+                  <p className="color-adjust">Asked {moment(question?.createdAt).fromNow()} by {question?.asker?.name}</p>
+                            </Link>
+                        </div>
+                    )
+                })}
+            </div>}
         </div>
-      )}
-    </div>
-  );
-};
+    )
+}
 
 export default Home;
