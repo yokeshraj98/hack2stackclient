@@ -29,7 +29,7 @@ const Login = () => {
       .then((res) => {
         const token = new Cookies();
         token.set("token", res.data.token, { path: "", maxAge: 604800 });
-        history.push("/");
+        history.push("/home");
       })
       .catch(() => setErrorMessage("Something went wrong. Please try again."));
   };
