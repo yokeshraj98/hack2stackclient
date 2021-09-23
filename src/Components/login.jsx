@@ -29,7 +29,7 @@ const Login = () => {
       .then((res) => {
         const token = new Cookies();
         token.set("token", res.data.token, { path: "", maxAge: 604800 });
-        history.push("/create");
+        history.push("/");
       })
       .catch(() => setErrorMessage("Something went wrong. Please try again."));
   };
@@ -39,7 +39,7 @@ const Login = () => {
       <div className="my-5">
         <center>
           <img
-            src={`${process.env.PUBLIC_URL}/favicon.icon`}
+            src={`${process.env.PUBLIC_URL}/favicon.ico`}
             alt="Stackoverflow icon"
             className="login-img"
           />
