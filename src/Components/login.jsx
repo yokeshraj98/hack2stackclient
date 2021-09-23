@@ -11,14 +11,14 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const history = useHistory();
 
-  useEffect(() => {
-    const token = new Cookies().get("token");
-    getUserByToken(token).then((res) => {
-      if (res && !res.status) {
-        setToHome(true);
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   const token = new Cookies().get("token");
+  //   getUserByToken(token).then((res) => {
+  //     if (res && !res.status) {
+  //       setToHome(true);
+  //     }
+  //   });
+  // }, []);
 
   const LoginUser = (e) => {
     e.preventDefault();
