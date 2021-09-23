@@ -39,7 +39,8 @@ const Home = () => {
     //         Sign up
     //       </Link>
     //     </div>
-      ) : (
+      // ) :
+       (
         <div>
           <h1 className="index-title">
             Top Questions{" "}
