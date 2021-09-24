@@ -36,7 +36,7 @@ const Login = () => {
 
   return (
     <div className="container">
-    {toHome? <Redirect to = "/" />: null}
+   
       <div className="my-5">
         <center>
           <img

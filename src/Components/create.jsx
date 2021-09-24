@@ -9,12 +9,12 @@ const Create = () => {
   const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
-      const token = new Cookies().get('token');
-      getUserByToken(token).then(result => {
-          if(result) setUserInfo(result)
-          else window.location = "/login"
-      })
-  }, [])
+    const token = new Cookies().get("token");
+    getUserByToken(token).then((result) => {
+      if (result) setUserInfo(result);
+      else window.location = "/login";
+    });
+  }, []);
 
   const askQuestion = (e) => {
     e.preventDefault();

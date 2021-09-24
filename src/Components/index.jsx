@@ -26,30 +26,42 @@ const Home = () => {
 
   // useEffect(() => console.log(userInfo), [userInfo]);
 
-    return(
-        <div className="container">
-            {!userInfo && !firstRender?
-            <div className="mt-5 intro-pg pt-5">
-                <h1 className="intro-title">We &lt;3 people who code</h1>
-                <p className="mt-3 intro-text">We build products that empower developers and connect them to solutions that enable productivity, growth, and discovery.</p>
-                <Link to = "/login" className="btn btn-dark mr-2">Log in</Link>
-                <Link to = "/register" className="btn btn-light ml-2">Sign up</Link>
-            </div>
-            :<div>
-                <h1 className="index-title">Top Questions <Link className="btn ask-question-btn" to = "/create">Ask question</Link></h1>
-                {questions?.map(question => {
-                    return(
-                        <div key = {question._id} className="box theme-reverse">
-                            <Link to = {`/question/${question._id}`}>
-                                <h3>{question.title}</h3>
-                                <p className="color-adjust">Asked {moment(question?.createdAt).fromNow()} by {question?.asker?.name}</p>
-                            </Link>
-                        </div>
-                    )
-                })}
-            </div>}
+  return (
+    <div className="container">
+      {!userInfo && !firstRender ? (
+        <div className="mt-5 intro-pg pt-5">
+          <Link to="/login" className="btn btn-dark mr-2">
+            Log in
+          </Link>
+          <Link to="/register" className="btn btn-light ml-2">
+            Sign up
+          </Link>
         </div>
-    )
-}
+      ) : (
+        <div>
+          <h1 className="index-title">
+            Top Questions{" "}
+            <Link className="btn ask-question-btn" to="/create">
+              Ask question
+            </Link>
+          </h1>
+          {questions?.map((question) => {
+            return (
+              <div key={question._id} className="box theme-reverse">
+                <Link to={`/question/${question._id}`}>
+                  <h3>{question.title}</h3>
+                  <p className="color-adjust">
+                    Asked {moment(question?.createdAt).fromNow()} by{" "}
+                    {question?.asker?.name}
+                  </p>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default Home;
