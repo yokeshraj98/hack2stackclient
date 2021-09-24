@@ -9,7 +9,7 @@ const Navbar = () => {
     const token = new Cookies().get("token");
     getUserByToken(token).then((res) => {
       if (res) {
-        if (res.status) window.location = "/login";
+        if (res.status) window.location = "/";
         else setUserInfo(res);
       }
     });
@@ -31,7 +31,7 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <Link className="topnav-item" to="/login">
+            <Link className="topnav-item" to="/">
               Login
             </Link>
             <Link className="topnav-item" to="/register">
